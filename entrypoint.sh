@@ -31,7 +31,7 @@ git checkout "${GIT_BRANCH}" || git checkout -b "${GIT_BRANCH}"
 git stash
 if [ "$GITCRYPT_ENABLE" = "true" ]; then
   if [ -f "$GITCRYPT_PRIVATE_KEY" ]; then
-    gpg --allow-secret-key-import --import "$GITCRYPT_PRIVATE_KEY"
+    gpg --no-tty --allow-secret-key-import --import "$GITCRYPT_PRIVATE_KEY"
     git-crypt unlock
   elif [ -f "$GITCRYPT_SYMMETRIC_KEY" ]; then
     git-crypt unlock "$GITCRYPT_SYMMETRIC_KEY"
